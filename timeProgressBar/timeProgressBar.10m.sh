@@ -13,9 +13,11 @@ function makeBar () {
     for i in `seq 1 $1`; do
         fullBar=$fullBar"█"
     done
-    for i in `seq 1 $restLength`; do
-        fullBar=$fullBar"□"
-    done
+    if (($restLength > 0)); then
+        for i in `seq 1 $restLength`; do
+            fullBar=$fullBar"□"
+        done
+    fi
     echo $fullBar
 }
 
