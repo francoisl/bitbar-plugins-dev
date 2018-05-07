@@ -10,7 +10,6 @@ histogramWidth=20
 function makeBar () {
     restLength=$(echo $2 - $1 | bc);
     fullBar=""
-echo "rest= $restLength"
     for i in `seq 1 $1`; do
         fullBar=$fullBar"█"
     done
