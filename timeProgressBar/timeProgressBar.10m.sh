@@ -9,12 +9,15 @@ histogramWidth=20
 
 function makeBar () {
     restLength=$(echo $2 - $1 | bc);
+    fullBar=""
+echo "rest= $restLength"
     for i in `seq 1 $1`; do
-        echo -n █
+        fullBar=$fullBar"█"
     done
     for i in `seq 1 $restLength`; do
-        echo -n  □
+        fullBar=$fullBar"□"
     done
+    echo $fullBar
 }
 
 # Get the day of year (0.. 365)
@@ -30,15 +33,23 @@ daysInMonth=$(cal $(date +"%m %Y") | awk 'NF {DAYS = $NF}; END {print DAYS}')
 monthPercent=$(printf %.2f $(echo $dayOfMonth/$daysInMonth*100 | bc -l))
 monthBarWidth=$(printf %.0f $(echo $monthPercent*$histogramWidth/100 | bc -l))
 
+# Percent of the day
+minutesSpentToday=$(echo "$(date +%H) * 60 + $(date +%M)" | bc)
+dayPercent=$(printf %.2f $(echo $minutesSpentToday/1440*100 | bc -l))
+dayBarWidth=$(printf %.0f $(echo $dayPercent*$histogramWidth/100 | bc -l))
+
 # Menubar elements 
 echo "Year: " $yearPercent%
 echo "Month: " $monthPercent%
+echo "Day: " $dayPercent%
 
 echo ---
 
 # Sub menus, with loading bar
-makeBar $yearBarWidth $histogramWidth
-echo " Year: " $yearPercent%
-makeBar $monthBarWidth $histogramWidth
-echo " Month: " $monthPercent%
+yearBar=$(makeBar $yearBarWidth $histogramWidth)
+echo "$yearBar Year: $yearPercent% | font=Courier"
+monthBar=$(makeBar $monthBarWidth $histogramWidth)
+echo "$monthBar Month: $monthPercent% | font=Courier"
+dayBar=$(makeBar $dayBarWidth $histogramWidth)
+echo "$dayBar Day: $dayPercent% | font=Courier"
 
