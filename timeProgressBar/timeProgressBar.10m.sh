@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # <bitbar.title>Time Progress Bar</bitbar.title>
-# <bitbar.version>v0.5</bitbar.version>
+# <bitbar.version>v1.0</bitbar.version>
 # <bitbar.author>Francois L</bitbar.author>
 
 # Constants
