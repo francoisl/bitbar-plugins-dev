@@ -15,10 +15,10 @@ function makeBar () {
     done
     if (($restLength > 0)); then
         for i in `seq 1 $restLength`; do
-            fullBar=$fullBar"□"
+            fullBar=$fullBar"-"
         done
     fi
-    echo $fullBar
+    echo [$fullBar]
 }
 
 # Get the day of year (0.. 365)
@@ -48,9 +48,9 @@ echo ---
 
 # Sub menus, with loading bar
 yearBar=$(makeBar $yearBarWidth $histogramWidth)
-echo "$yearBar Year: $yearPercent% | font=Courier"
+echo "$yearBar Year:  $yearPercent% | font=Courier"
 monthBar=$(makeBar $monthBarWidth $histogramWidth)
 echo "$monthBar Month: $monthPercent% | font=Courier"
 dayBar=$(makeBar $dayBarWidth $histogramWidth)
-echo "$dayBar Day: $dayPercent% | font=Courier"
+echo "$dayBar Day:   $dayPercent% | font=Courier"
 
