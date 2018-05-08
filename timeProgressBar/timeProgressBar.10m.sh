@@ -6,20 +6,6 @@
 
 # Constants
 barWidth=20
-colorStartR=0xff
-colorStartG=0x99
-colorStartB=0x00
-
-# Convert a number to its hex value, without the 0x prefix
-# e.g. 255 to FF or 0x01 to 01
-function convertToHex () {
-    echo $(printf "%02s\n" $(echo "obase=16; $(($1))" | bc))
-}
-
-# Get the hex version of a R,G,B color group without the 0x prefixes
-function getHexColor () {
-    echo $(convertToHex $1)$(convertToHex $2)$(convertToHex $3)
-}
 
 function makeBar () {
     restLength=$(echo $2 - $1 | bc);
