@@ -11,7 +11,7 @@ function makeBar () {
     restLength=$(echo $2 - $1 | bc);
     fullBar=""
     for i in `seq 1 $1`; do
-        fullBar=$fullBar"█"
+        fullBar=$fullBar"▆"
     done
     if (($restLength > 0)); then
         for i in `seq 1 $restLength`; do
