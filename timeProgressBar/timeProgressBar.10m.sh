@@ -5,7 +5,7 @@
 # <bitbar.author>Francois L</bitbar.author>
 
 # Constants
-histogramWidth=20
+barWidth=20
 
 function makeBar () {
     restLength=$(echo $2 - $1 | bc);
@@ -27,17 +27,17 @@ dayOfMonth=$(date +%d)
 
 # Percent of year that has passed
 yearPercent=$(printf %.2f $(echo $dayOfYear/365*100 | bc -l))
-yearBarWidth=$(printf %.0f $(echo $yearPercent*$histogramWidth/100 | bc -l))
+yearBarWidth=$(printf %.0f $(echo $yearPercent*$barWidth/100 | bc -l))
 
 # Percent of the month that has passed
 daysInMonth=$(cal $(date +"%m %Y") | awk 'NF {DAYS = $NF}; END {print DAYS}')
 monthPercent=$(printf %.2f $(echo $dayOfMonth/$daysInMonth*100 | bc -l))
-monthBarWidth=$(printf %.0f $(echo $monthPercent*$histogramWidth/100 | bc -l))
+monthBarWidth=$(printf %.0f $(echo $monthPercent*$barWidth/100 | bc -l))
 
 # Percent of the day
 minutesSpentToday=$(echo "$(date +%H) * 60 + $(date +%M)" | bc)
 dayPercent=$(printf %.2f $(echo $minutesSpentToday/1440*100 | bc -l))
-dayBarWidth=$(printf %.0f $(echo $dayPercent*$histogramWidth/100 | bc -l))
+dayBarWidth=$(printf %.0f $(echo $dayPercent*$barWidth/100 | bc -l))
 
 # Menubar elements 
 echo "Year: $yearPercent% | dropdown=false"
@@ -47,10 +47,10 @@ echo "Day: $dayPercent% | dropdown=false"
 echo ---
 
 # Sub menus, with loading bar
-yearBar=$(makeBar $yearBarWidth $histogramWidth)
+yearBar=$(makeBar $yearBarWidth $barWidth)
 echo "$yearBar Year:  $yearPercent% | font=Courier"
-monthBar=$(makeBar $monthBarWidth $histogramWidth)
+monthBar=$(makeBar $monthBarWidth $barWidth)
 echo "$monthBar Month: $monthPercent% | font=Courier"
-dayBar=$(makeBar $dayBarWidth $histogramWidth)
+dayBar=$(makeBar $dayBarWidth $barWidth)
 echo "$dayBar Day:   $dayPercent% | font=Courier"
 
