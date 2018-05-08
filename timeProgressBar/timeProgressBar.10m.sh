@@ -40,9 +40,9 @@ dayPercent=$(printf %.2f $(echo $minutesSpentToday/1440*100 | bc -l))
 dayBarWidth=$(printf %.0f $(echo $dayPercent*$histogramWidth/100 | bc -l))
 
 # Menubar elements 
-echo "Year: " $yearPercent%
-echo "Month: " $monthPercent%
-echo "Day: " $dayPercent%
+echo "Year: $yearPercent% | dropdown=false"
+echo "Month: $monthPercent% | dropdown=false"
+echo "Day: $dayPercent% | dropdown=false"
 
 echo ---
 
