@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # <bitbar.title>Time Progress Bar</bitbar.title>
-# <bitbar.version>v1.0</bitbar.version>
+# <bitbar.version>v1.1</bitbar.version>
 # <bitbar.author>Francois L</bitbar.author>
 
 # Constants
@@ -48,9 +48,9 @@ echo ---
 
 # Sub menus, with loading bar
 yearBar=$(makeBar $yearBarWidth $barWidth)
-echo "$yearBar Year:  $yearPercent% | font=Courier"
+echo "$yearBar Year:  $yearPercent% | font=Courier color=gray"
 monthBar=$(makeBar $monthBarWidth $barWidth)
-echo "$monthBar Month: $monthPercent% | font=Courier"
+echo "$monthBar Month: $monthPercent% | font=Courier color=gray"
 dayBar=$(makeBar $dayBarWidth $barWidth)
-echo "$dayBar Day:   $dayPercent% | font=Courier"
+echo "$dayBar Day:   $dayPercent% | font=Courier color=gray"
 
