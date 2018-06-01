@@ -30,7 +30,7 @@ yearPercent=$(printf %.2f $(echo $dayOfYear/365*100 | bc -l))
 yearBarWidth=$(printf %.0f $(echo $yearPercent*$barWidth/100 | bc -l))
 
 # Percent of the month that has passed
-daysInMonth=$(cal $(date +"%m %Y") | awk 'NF {DAYS = $NF}; END {print DAYS}')
+daysInMonth=$(cal $(date +"%m %Y") | awk 'NF {DAYS = $NF}; END {print DAYS}' | sed 's/[^0-9]*//g')
 monthPercent=$(printf %.2f $(echo $dayOfMonth/$daysInMonth*100 | bc -l))
 monthBarWidth=$(printf %.0f $(echo $monthPercent*$barWidth/100 | bc -l))
 
